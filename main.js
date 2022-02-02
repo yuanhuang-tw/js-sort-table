@@ -20,8 +20,8 @@ sortTable.addEventListener('click', e => {
 
 // --- function ---
 function tableSort(sortThiscolumn) {
-  let allTableData = getAllDataFromTable();
-  let columnDataType = checkColumnDataType(allTableData, sortThiscolumn);
+  let tableData = getTableData();
+  let columnDataType = checkColumnDataType(tableData, sortThiscolumn);
 
   // 目前點選的欄位跟上次不一樣的話，sortStatus 清空
   if (indexForSort != sortThiscolumn) {
@@ -38,11 +38,11 @@ function tableSort(sortThiscolumn) {
 
   indexForSort = sortThiscolumn;
 
-  allTableData.sort(sortMethod);
+  tableData.sort(sortMethod);
 
   showOrderIcon(sortStatus, sortThiscolumn);
 
-  dataIntoTable(allTableData);
+  putDataIntoTable(tableData);
 }
 
 // 字串 小 -> 大
@@ -83,11 +83,11 @@ function sortNumberDesc(a, b) {
 
 // 取得 table 資料並放到 array
 // data 會是二維陣列
-function getAllDataFromTable() {
+function getTableData() {
   let data = [];
 
   trs.forEach(tr => {
-    let tds = tr.querySelectorAll('td');
+    const tds = tr.querySelectorAll('td');
     let tdArray = [];
 
     tds.forEach(td => tdArray.push(td.innerHTML));
@@ -100,8 +100,8 @@ function getAllDataFromTable() {
 
 // 確認欄位值的 data type
 // 只要欄位內有一個值是 string 就回傳 true
-function checkColumnDataType(allTableData, column) {
-  return allTableData.some(row => isNaN(row[column]));
+function checkColumnDataType(tableData, column) {
+  return tableData.some(row => isNaN(row[column]));
 }
 
 // 顯示 order icon
@@ -126,12 +126,12 @@ function showOrderIcon(sortStatus, sortThiscolumn) {
 }
 
 // 排序後資料放回 table
-function dataIntoTable(allTableData) {
-  for (let i = 0; i < allTableData.length; i++) {
+function putDataIntoTable(tableData) {
+  for (let i = 0; i < tableData.length; i++) {
     const tds = trs[i].querySelectorAll('td');
 
     for (let j = 0; j < tds.length; j++) {
-      tds[j].innerHTML = allTableData[i][j];
+      tds[j].innerHTML = tableData[i][j];
     }
   }
 }

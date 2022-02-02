@@ -1,6 +1,6 @@
 const sortTable = document.querySelector('.sort-table');
 const allTh = sortTable.querySelectorAll('th');
-const trs = document.querySelectorAll('tbody tr');
+const trs = sortTable.querySelectorAll('tbody tr');
 let sortMethod;
 let sortStatus;
 let indexForSort;
@@ -12,6 +12,7 @@ allTh.forEach((th, i) => {
 sortTable.addEventListener('click', e => {
   let ta = e.target;
 
+  // 有 .sort-th 才會排序
   if (ta.classList.contains('sort-th')) {
     tableSort(ta.dataset.index);
   }

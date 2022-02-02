@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js-sort-table</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/tables-min.css">
+  <style>
+    .pure-table .sort-th {
+      cursor: pointer;
+    }
+
+    .pure-table th,
+    .pure-table td {
+      width: 160px;
+      padding: 12px;
+    }
+
+    .pure-table th span {
+      margin-left: 10px;
+    }
+  </style>
+<body>
+  <table class="sort-table pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th class="sort-th">Name</th>
+        <th>Email</th>
+        <th class="sort-th">Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sam Huang</td>
+        <td>sam@sam.com.tw</td>
+        <td>39</td>
+      </tr>
+      <tr>
+        <td>abc</td>
+        <td>3abc@abc.com.tw</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>黃阿原</td>
+        <td>huang@home.com</td>
+        <td>39</td>
+      </tr>
+      <tr>
+        <td>Yuan Huang</td>
+        <td>yuan@yuan.com.tw</td>
+        <td>26</td>
+      </tr>
+      <tr>
+        <td>Huang Sam</td>
+        <td>sam@sam.com.tw</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td>99</td>
+        <td>99@sam.com.tw</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>王小明</td>
+        <td>ming@sam.com.tw</td>
+        <td>19</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script src="main.js"></script>
+</body>
+</html>

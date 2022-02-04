@@ -21,7 +21,7 @@ sortTable.addEventListener('click', e => {
 // --- function ---
 function tableSort(sortThiscolumn) {
   let tableData = getTableData();
-  let columnDataType = checkColumnDataType(tableData, sortThiscolumn);
+  let stringInColumn = checkColumnDataType(tableData, sortThiscolumn);
 
   // 目前點選的欄位跟上次不一樣的話，sortStatus 清空
   if (indexForSort != sortThiscolumn) {
@@ -29,10 +29,10 @@ function tableSort(sortThiscolumn) {
   }
 
   if (sortStatus == '' || sortStatus == 'desc') {
-    sortMethod = (columnDataType) ? sortAsc : sortNumberAsc;
+    sortMethod = (stringInColumn) ? sortAsc : sortNumberAsc;
     sortStatus = 'asc';
   } else {
-    sortMethod = (columnDataType) ? sortDesc : sortNumberDesc;
+    sortMethod = (stringInColumn) ? sortDesc : sortNumberDesc;
     sortStatus = 'desc'
   }
 
@@ -90,7 +90,7 @@ function getTableData() {
     const tds = tr.querySelectorAll('td');
     let tdArray = [];
 
-    tds.forEach(td => tdArray.push(td.innerHTML));
+    tds.forEach(td => tdArray.push(td.textContent));
 
     data.push(tdArray);
   });
@@ -131,7 +131,7 @@ function putDataIntoTable(tableData) {
     const tds = trs[i].querySelectorAll('td');
 
     for (let j = 0; j < tds.length; j++) {
-      tds[j].innerHTML = tableData[i][j];
+      tds[j].textContent = tableData[i][j];
     }
   }
 }
